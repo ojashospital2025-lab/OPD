@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Mukta:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 <style>
   body { font-size: 16px; }
   .bar { background: var(--navy); color: #fff; }
@@ -45,6 +45,27 @@
   .pill { display: inline-block; font-size: .78rem; font-weight: 700; border-radius: 999px; padding: 1px 8px; background: var(--soft); }
   .empty { text-align: center; color: var(--muted); padding: 40px 10px; background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; }
   .meta { color: var(--muted); font-size: .88rem; }
+  .exports { padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; align-items: center; }
+  .srv { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+  .srv i { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); display: inline-block; }
+  #report { display: none; }
+  @media print {
+    @page { size: A4 landscape; margin: 10mm; }
+    body { background: #fff !important; color: #000 !important; font-size: 11px; }
+    body > *:not(#report) { display: none !important; }
+    #report { display: block !important; }
+  }
+  #report { font-family: var(--body); color: #000; }
+  #report .rh { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid #14215c; padding-bottom: 6px; margin-bottom: 10px; }
+  #report .rh h1 { font: 800 24px/1.1 var(--display); color: #14215c; margin: 0; }
+  #report .rh p { margin: 2px 0 0; font-size: 12px; }
+  #report h2 { font: 700 15px/1.2 var(--display); color: #14215c; margin: 14px 0 6px; }
+  #report .sumgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  #report table { min-width: 0; width: 100%; border-collapse: collapse; background: #fff; font-size: 10.5px; }
+  #report th, #report td { border: 1px solid #b9c0d8; padding: 3px 5px; text-align: left; vertical-align: top; opacity: 1 !important; text-decoration: none !important; }
+  #report th { background: #e8ecf8 !important; color: #14215c; position: static; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  #report tr { break-inside: avoid; }
+  #report .foot { margin-top: 10px; font-size: 10px; color: #444; display: flex; justify-content: space-between; }
 </style>
 </head>
 <body>
@@ -76,7 +97,13 @@
       <div class="field"><label for="fStatus">स्थिती</label><select id="fStatus"><option value="">सर्व</option></select></div>
       <div class="field"><label for="q">शोधा</label><input id="q" placeholder="नाव, मोबाईल, ID, गाव"></div>
       <button class="btn btn-navy" id="refresh" style="min-height:42px">रिफ्रेश</button>
-      <button class="btn btn-ghost" id="csv" style="min-height:42px">Excel (CSV) डाउनलोड</button>
+    </div>
+    <div class="row exports">
+      <span class="meta" style="font-weight:600">रिपोर्ट (निवडलेल्या तारखा व फिल्टरनुसार):</span>
+      <button class="btn btn-gold" id="xlsx" style="min-height:42px">Excel रिपोर्ट (.xlsx)</button>
+      <button class="btn btn-navy" id="pdf" style="min-height:42px">PDF रिपोर्ट</button>
+      <button class="btn btn-ghost" id="csv" style="min-height:42px">CSV</button>
+      <a class="btn btn-ghost" id="sheetLink" href="#" target="_blank" rel="noopener" style="min-height:42px" hidden>Google Sheet उघडा</a>
     </div>
     <div class="stats" id="stats"></div>
     <div class="meta" id="updated"></div>
@@ -84,7 +111,9 @@
   <div id="list"></div>
 </main>
 
-<script src="config.js?v=2"></script>
+<div id="report" aria-hidden="true"></div>
+
+<script src="config.js?v=3"></script>
 <script>
 (function () {
   const A = window.OJAS, $ = s => document.querySelector(s);
@@ -142,7 +171,10 @@
     try {
       const r = await A.api({ action: "list", token, from, to });
       if (!r.ok) { if (r.error === "LOGIN_REQUIRED") { toast("लॉगिनची वेळ संपली. पुन्हा लॉगिन करा."); $("#logout").click(); return; } throw new Error(r.error); }
-      rows = r.rows; $("#updated").textContent = "शेवटचे अपडेट: " + new Date().toLocaleTimeString("mr-IN") + " · दर 1 मिनिटाला आपोआप रिफ्रेश";
+      rows = r.rows;
+      if (r.sheetUrl) { $("#sheetLink").href = r.sheetUrl; $("#sheetLink").hidden = false; }
+      $("#updated").innerHTML = (A.isDemo ? "<b>डेमो मोड</b>" : '<span class="srv"><i></i>Google Sheet शी जोडलेले</span>') +
+        " · शेवटचे अपडेट: " + new Date().toLocaleTimeString("mr-IN") + " · दर 1 मिनिटाला आपोआप रिफ्रेश · या कालावधीत " + rows.length + " नोंदी";
       render();
     } catch (ex) { toast(ex.message || "डेटा मिळाला नाही"); }
     clearInterval(timer); timer = setInterval(load, 60000);
@@ -199,6 +231,61 @@
       .map(a => a.map(q).join(",")).join("\r\n");
     const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
     a.download = `ojas-appointments_${from}_to_${to}.csv`; document.body.appendChild(a); a.click(); a.remove();
+  };
+
+  // ---------- रिपोर्ट: Excel (.xlsx) व PDF ----------
+  const COLS = [["date", "तारीख"], ["token", "टोकन"], ["session", "वेळ"], ["id", "ID"], ["name", "रुग्णाचे नाव"], ["age", "वय"], ["gender", "लिंग"],
+    ["phone", "मोबाईल"], ["village", "गाव"], ["doctor", "डॉक्टर"], ["service", "कारण"], ["problem", "त्रास"], ["status", "स्थिती"], ["notes", "नोंद"], ["bookedAt", "बुकिंग वेळ"]];
+  function group(list, key) { const m = {}; list.forEach(r => m[r[key] || "—"] = (m[r[key] || "—"] || 0) + 1); return Object.entries(m).sort((a, b) => b[1] - a[1]); }
+  function summary(list) {
+    return { byStatus: group(list, "status"), byDoctor: group(list, "doctor"), bySession: group(list, "session"), byService: group(list, "service"),
+      byDate: Object.entries(list.reduce((m, r) => (m[r.date] = (m[r.date] || 0) + 1, m), {})).sort() };
+  }
+  function rangeLabel() { const [f, t] = range(); return f === t ? fmt(f) : fmt(f) + " ते " + fmt(t); }
+  function fileBase() { const [f, t] = range(); return "Ojas_OPD_Report_" + f + (f === t ? "" : "_to_" + t); }
+  function loadScript(src) { return new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => no(new Error("लायब्ररी लोड झाली नाही. इंटरनेट तपासा.")); document.head.appendChild(s); }); }
+
+  $("#xlsx").onclick = async () => {
+    const list = filtered(); if (!list.length) { toast("या कालावधीत नोंदी नाहीत"); return; }
+    const btn = $("#xlsx"); btn.disabled = true;
+    try {
+      if (!window.XLSX) await loadScript("https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js");
+      const wb = XLSX.utils.book_new(), S = summary(list);
+      const data = [COLS.map(c => c[1]), ...list.map(r => COLS.map(([k]) => k === "token" ? Number(r[k]) : (r[k] ?? "")))];
+      const ws = XLSX.utils.aoa_to_sheet(data);
+      ws["!cols"] = [12, 7, 10, 11, 24, 6, 14, 13, 14, 26, 26, 30, 13, 24, 19].map(w => ({ wch: w }));
+      ws["!autofilter"] = { ref: XLSX.utils.encode_range({ s: { r: 0, c: 0 }, e: { r: data.length - 1, c: COLS.length - 1 } }) };
+      ws["!freeze"] = { xSplit: 0, ySplit: 1 };
+      XLSX.utils.book_append_sheet(wb, ws, "अपॉइंटमेंट");
+      const sum = [["ओजस क्लिनिक, तेल्हारा — OPD अपॉइंटमेंट रिपोर्ट"], ["कालावधी", rangeLabel()], ["तयार केले", new Date().toLocaleString("mr-IN")], ["एकूण अपॉइंटमेंट", list.length], []];
+      const block = (title, arr) => { sum.push([title, "संख्या"]); arr.forEach(r => sum.push(r)); sum.push([]); };
+      block("स्थितीनुसार", S.byStatus); block("डॉक्टरनुसार", S.byDoctor); block("वेळेनुसार", S.bySession);
+      block("कारणानुसार", S.byService); block("तारखेनुसार", S.byDate.map(([d, n]) => [fmt(d), n]));
+      const ws2 = XLSX.utils.aoa_to_sheet(sum); ws2["!cols"] = [{ wch: 34 }, { wch: 30 }];
+      XLSX.utils.book_append_sheet(wb, ws2, "सारांश");
+      XLSX.writeFile(wb, fileBase() + ".xlsx");
+      toast("Excel रिपोर्ट डाउनलोड झाला");
+    } catch (ex) { toast(ex.message || "Excel तयार झाला नाही"); }
+    finally { btn.disabled = false; }
+  };
+
+  $("#pdf").onclick = () => {
+    const list = filtered(); if (!list.length) { toast("या कालावधीत नोंदी नाहीत"); return; }
+    const S = summary(list);
+    const tbl = (title, arr) => `<div><h2>${title}</h2><table><tbody>${arr.map(([k, v]) => `<tr><td>${esc(k)}</td><td style="text-align:right;width:50px"><b>${v}</b></td></tr>`).join("")}</tbody></table></div>`;
+    const filt = [$("#fDoc").value && "डॉक्टर: " + $("#fDoc").value, $("#fStatus").value && "स्थिती: " + $("#fStatus").value, $("#q").value.trim() && "शोध: " + $("#q").value.trim()].filter(Boolean).join(" · ");
+    $("#report").innerHTML = `
+      <div class="rh"><div><h1>ओजस क्लिनिक, तेल्हारा</h1><p>बाल व स्त्री रुग्णालय · OPD अपॉइंटमेंट रिपोर्ट</p></div>
+        <div style="text-align:right"><p><b>कालावधी:</b> ${esc(rangeLabel())}</p>${filt ? `<p>${esc(filt)}</p>` : ""}<p><b>एकूण:</b> ${list.length} अपॉइंटमेंट</p></div></div>
+      <div class="sumgrid">${tbl("स्थितीनुसार", S.byStatus)}${tbl("डॉक्टरनुसार", S.byDoctor)}${tbl("वेळेनुसार", S.bySession)}${tbl("तारखेनुसार", S.byDate.map(([d, n]) => [fmt(d), n]))}</div>
+      <h2>सविस्तर यादी</h2>
+      <table><thead><tr><th>तारीख</th><th>टोकन</th><th>वेळ</th><th>रुग्ण</th><th>वय/लिंग</th><th>मोबाईल</th><th>गाव</th><th>डॉक्टर</th><th>कारण / त्रास</th><th>स्थिती</th><th>नोंद</th></tr></thead><tbody>
+      ${list.map(r => `<tr><td>${esc(r.date)}</td><td>${esc(r.token)}</td><td>${esc(r.session)}</td><td><b>${esc(r.name)}</b><br>${esc(r.id)}</td><td>${esc([r.age, r.gender].filter(Boolean).join(" / "))}</td><td>${esc(r.phone)}</td><td>${esc(r.village)}</td><td>${esc(r.doctor)}</td><td>${esc(r.service)}${r.problem ? "<br>" + esc(r.problem) : ""}</td><td>${esc(r.status)}</td><td>${esc(r.notes)}</td></tr>`).join("")}
+      </tbody></table>
+      <div class="foot"><span>शेगाव रोड, शेगाव नाका जवळ, तेल्हारा · 8799809360 · ojashospital2025@gmail.com</span><span>तयार केले: ${esc(new Date().toLocaleString("mr-IN"))}</span></div>`;
+    const t = document.title; document.title = fileBase();
+    toast("प्रिंट विंडोमध्ये 'Save as PDF' निवडा");
+    setTimeout(() => { window.print(); document.title = t; }, 300);
   };
 
   show();

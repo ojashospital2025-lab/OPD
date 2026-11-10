@@ -60,6 +60,7 @@ function doPost(e) {
       case 'book': return json(book(body));
       case 'lookup': return json(lookup(body));
       case 'login': return json(login(body));
+      case 'ping': return json({ ok: true, time: Utilities.formatDate(new Date(), TZ, 'yyyy-MM-dd HH:mm:ss') });
       case 'list': requireAdmin(body.token); return json(list(body));
       case 'update': requireAdmin(body.token); return json(update(body));
       default: return json({ ok: false, error: 'अवैध विनंती' });
@@ -102,8 +103,10 @@ function book(b) {
     const token = rows.filter(r => r.AppointmentDate === date).length + 1;
     const id = 'OJ' + Utilities.getUuid().replace(/-/g, '').slice(0, 6).toUpperCase();
     const now = Utilities.formatDate(new Date(), TZ, 'yyyy-MM-dd HH:mm:ss');
-    sh.appendRow([id, String(token), date, session, doctor, clean(b.service, 60), name, age,
-      clean(b.gender, 10), phone, clean(b.village, 60), clean(b.problem, 300), 'प्रतीक्षेत', now, '', now]);
+    const row = [id, String(token), date, session, doctor, clean(b.service, 60), name, age,
+      clean(b.gender, 20), phone, clean(b.village, 60), clean(b.problem, 300), 'प्रतीक्षेत', now, '', now];
+    // मजकूर स्वरूपात लिहा, म्हणजे तारीख/मोबाईल Sheet आपोआप बदलत नाही
+    sh.getRange(sh.getLastRow() + 1, 1, 1, row.length).setNumberFormat('@').setValues([row]);
     return { ok: true, id: id, token: token, date: date, session: session };
   } finally { lock.releaseLock(); }
 }
@@ -146,7 +149,7 @@ function list(b) {
     .map(r => ({ id: r.ID, token: Number(r.Token), date: r.AppointmentDate, session: r.Session, doctor: r.Doctor,
       service: r.Service, name: r.PatientName, age: r.Age, gender: r.Gender, phone: r.Phone, village: r.Village,
       problem: r.Problem, status: r.Status, bookedAt: r.BookedAt, notes: r.Notes }));
-  return { ok: true, rows: rows };
+  return { ok: true, rows: rows, sheetUrl: SpreadsheetApp.getActiveSpreadsheet().getUrl() };
 }
 
 function update(b) {
