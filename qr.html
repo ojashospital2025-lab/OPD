@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ओजस QR पोस्टर</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Mukta:wght@500;600;700&display=swap">
+<style>
+  :root { --navy: #14215c; --gold: #f6c21c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9ecf5; font-family: "Mukta", sans-serif; color: var(--navy); }
+  .tools { text-align: center; padding: 14px 16px; }
+  .tools button { font: 700 1rem "Mukta", sans-serif; background: var(--navy); color: #fff; border: 0; border-radius: 999px; padding: 12px 22px; cursor: pointer; }
+  .sheet { width: 210mm; max-width: 100%; margin: 0 auto 24px; background: #fff; padding: 12mm; }
+  .head { background: var(--navy); color: #fff; text-align: center; border-radius: 12px; padding: 16px; }
+  .head h1 { font: 800 3rem/1 "Baloo 2", sans-serif; margin: 0; }
+  .head p { margin: 4px 0 0; color: var(--gold); font-weight: 700; font-size: 1.3rem; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin-top: 8mm; }
+  .q { border: 3px solid var(--navy); border-radius: 14px; padding: 6mm; text-align: center; }
+  .q h2 { font: 800 1.6rem/1.15 "Baloo 2", sans-serif; margin: 0 0 4px; }
+  .q img { width: 52mm; max-width: 100%; image-rendering: pixelated; }
+  .q p { margin: 4px 0 0; font-weight: 600; }
+  .q .step { display: inline-block; background: var(--gold); border-radius: 999px; padding: 2px 12px; font-weight: 700; margin-bottom: 6px; }
+  .foot { text-align: center; margin-top: 8mm; font-weight: 700; font-size: 1.2rem; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .head h1 { font-size: 2.2rem; } }
+  @media print { body { background: #fff; } .tools { display: none; } .sheet { margin: 0; padding: 8mm; } @page { size: A4; margin: 0; } }
+</style>
+</head>
+<body>
+<div class="tools"><button onclick="window.print()">पोस्टर प्रिंट करा (A4)</button></div>
+<div class="sheet">
+  <div class="head"><h1>ओजस क्लिनिक</h1><p>बाल व स्त्री रुग्णालय · तेल्हारा</p></div>
+  <div class="grid" id="g"></div>
+  <div class="foot">संपर्क: 8799809360 · शेगाव रोड, शेगाव नाका जवळ, तेल्हारा</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="config.js"></script>
+<script>
+  const C = window.OJAS_CONFIG, site = location.href.split("#")[0].replace(/qr\.html.*$/, "");
+  [["ऑनलाइन अपॉइंटमेंट", "स्कॅन करा व टोकन मिळवा", site + "#book"],
+   ["थेट फोन करा", "स्कॅन करताच कॉल लागेल", "tel:+91" + C.PHONE],
+   ["Instagram रिव्ह्यू", "तुमचा अनुभव आम्हाला कळवा", C.INSTAGRAM_URL],
+   ["YouTube चॅनेल", "आरोग्य माहितीचे व्हिडिओ", C.YOUTUBE_URL]].forEach(([t, p, u]) => {
+    let img = "<p style='padding:20mm 0'>config.js मध्ये लिंक टाका</p>";
+    if (u) { const q = qrcode(0, "M"); q.addData(u); q.make(); img = `<img alt="${t}" src="${q.createDataURL(8, 2)}">`; }
+    document.getElementById("g").insertAdjacentHTML("beforeend", `<div class="q"><span class="step">स्कॅन करा</span><h2>${t}</h2>${img}<p>${p}</p></div>`);
+  });
+</script>
+</body>
+</html>

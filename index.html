@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ओजस क्लिनिक, तेल्हारा</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="ओजस क्लिनिक, तेल्हारा — बालरोग, स्त्रीरोग व जनरल मेडिसिन. डॉ. स्वप्निल काळणे व डॉ. अनुजा काळणे. ऑनलाइन अपॉइंटमेंट बुक करा. संपर्क 8799809360.">
+<meta name="theme-color" content="#14215c">
+<meta property="og:title" content="ओजस क्लिनिक, तेल्हारा — बाल व स्त्री रुग्णालय">
+<meta property="og:description" content="घरबसल्या ऑनलाइन अपॉइंटमेंट बुक करा. संपर्क: 8799809360">
+<meta property="og:image" content="assets/ojas-promo-poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314215c'/%3E%3Cpath d='M32 50s-16-10-16-22a9 9 0 0 1 16-6 9 9 0 0 1 16 6c0 12-16 22-16 22z' fill='%23f6c21c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Mukta:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<style>
+  header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--navy); color: #fff; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--navy); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+  .brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+  .brand b { font: 800 1.6rem/1 var(--display); color: #fff; }
+  .brand span { color: var(--gold); font-weight: 600; font-size: .95rem; }
+  .top nav { display: flex; gap: 18px; font-weight: 500; }
+  .top nav a { text-decoration: none; opacity: .9; }
+  .top nav a:hover { color: var(--gold); }
+  .top .call { padding: 10px 16px; min-height: 42px; }
+  @media (max-width: 860px) { .top nav { display: none; } .brand span { display: none; } }
+
+  .hero { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; inset: auto -10% -60px -10%; height: 120px; background: var(--bg); border-radius: 50% 50% 0 0; }
+  .hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: center; padding-block: 44px 96px; position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(3.2rem, 9vw, 5.6rem); font-weight: 800; letter-spacing: -.5px; }
+  .hero h1 em { display: block; font-style: normal; color: var(--gold); font-size: .42em; font-weight: 700; margin-top: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 8px; }
+  .tags span { border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 4px 14px; font-weight: 500; }
+  .hero p.lead { color: #d9def5; max-width: 34ch; font-size: 1.1rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .portraits { display: flex; justify-content: center; align-items: flex-end; gap: 0; }
+  .portraits figure { margin: 0; border-radius: 50%; overflow: hidden; border: 5px solid var(--gold); background: #fff; aspect-ratio: 1; max-width: 100%; }
+  .portraits figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portraits .p1 { width: 58%; z-index: 2; }
+  .portraits .p2 { width: 48%; margin-left: -10%; margin-bottom: 18%; border-color: #fff; }
+  .hours-note { font-size: .92rem; color: #c3c9ea; margin-top: 14px; }
+  @media (max-width: 760px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 28px 90px; } .portraits { max-width: 320px; margin: 0 auto; } }
+
+  section.block { padding-block: 56px; }
+  .eyebrow { color: var(--gold-ink); font-weight: 700; letter-spacing: .06em; font-size: .9rem; }
+  .sec-h { display: grid; gap: 4px; margin-bottom: 26px; }
+  .sec-h h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+  .sec-h p { color: var(--muted); margin: 0; max-width: 60ch; }
+
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .svc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: start; }
+  .svc .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--soft); display: grid; place-items: center; color: var(--navy-2); }
+  :root[data-theme="dark"] .svc .ic { color: var(--gold); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .svc .ic { color: var(--gold); } }
+  .svc .ic svg { width: 26px; height: 26px; }
+  .svc h3 { font-size: 1.15rem; margin-bottom: 2px; }
+  .svc p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .svc.wide { grid-column: 1 / -1; }
+
+  .doctors { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .doc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid; }
+  .doc .head { background: var(--navy); color: #fff; padding: 18px 20px; display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 4px 16px; align-items: center; }
+  .doc .head img { grid-row: span 2; width: 116px; height: 132px; object-fit: cover; object-position: center 20%; border-radius: 12px; border: 3px solid var(--gold); background: #fff; }
+  .doc .head h3, .doc .head .deg { align-self: end; }
+  .doc .head .deg { align-self: start; }
+  @media (max-width: 400px) { .doc .head { grid-template-columns: 92px minmax(0, 1fr); } .doc .head img { width: 92px; height: 108px; } .doc .head h3 { font-size: 1.3rem; } }
+  .doc .head h3 { font-size: 1.6rem; color: var(--gold); }
+  .doc .head .deg { font-weight: 600; letter-spacing: .03em; }
+  .doc .body { padding: 18px 22px 22px; display: grid; gap: 10px; }
+  .doc .role { font-weight: 700; font-size: 1.1rem; }
+  .doc ul { margin: 0; padding-left: 20px; color: var(--muted); }
+  .doc .bookdoc { justify-self: start; margin-top: 4px; }
+
+  .book { background: var(--soft); }
+  .book-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; }
+  @media (max-width: 900px) { .book-grid { grid-template-columns: 1fr; } }
+  form.card, .side .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 560px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; }
+  .chips label { border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; font-weight: 500; background: var(--surface); }
+  .chips input:checked + label { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .chips input:focus-visible + label { outline: 3px solid var(--gold); }
+  .daystrip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+  .daystrip button { flex: none; width: 66px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 12px; padding: 8px 4px; cursor: pointer; font: inherit; line-height: 1.2; }
+  .daystrip button b { display: block; font: 700 1.35rem/1.1 var(--display); }
+  .daystrip button small { color: var(--muted); font-size: .78rem; }
+  .daystrip button[aria-pressed="true"] { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .daystrip button[aria-pressed="true"] small { color: var(--gold); }
+  .form-stack { display: grid; gap: 16px; }
+  .hp { position: absolute; left: -9999px; }
+  .err { color: var(--bad); font-weight: 600; margin: 0; }
+  .side { display: grid; gap: 16px; }
+  .side h3 { font-size: 1.2rem; margin-bottom: 8px; }
+  .side ol { margin: 0; padding-left: 20px; color: var(--muted); }
+  .result { margin-top: 10px; padding: 12px; background: var(--soft); border-radius: 10px; }
+
+  dialog { border: 0; border-radius: 18px; padding: 0; max-width: min(440px, calc(100% - 32px)); width: 100%; background: var(--surface); color: var(--fg); }
+  dialog::backdrop { background: rgba(10, 16, 45, .6); }
+  .ticket { text-align: center; }
+  .ticket .t-head { background: var(--navy); color: #fff; padding: 22px; }
+  .ticket .t-head p { margin: 0; color: var(--gold); font-weight: 600; }
+  .ticket .num { font: 800 4.5rem/1 var(--display); color: var(--gold); margin: 6px 0 0; }
+  .ticket .t-body { padding: 20px 22px 22px; display: grid; gap: 10px; }
+  .ticket dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; text-align: left; margin: 0; }
+  .ticket dt { color: var(--muted); }
+  .ticket dd { margin: 0; font-weight: 600; }
+  .ticket .acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 6px; }
+
+  .qr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+  .qr { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; text-align: center; display: grid; gap: 8px; justify-items: center; }
+  .qr .code { width: 170px; height: 170px; background: #fff; border-radius: 12px; padding: 8px; display: grid; place-items: center; }
+  .qr .code img { width: 100%; height: 100%; image-rendering: pixelated; }
+  .qr h3 { font-size: 1.15rem; }
+  .qr p { margin: 0; color: var(--muted); font-size: .92rem; }
+  .qr .tag { font-size: .8rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: var(--gold); color: #14215c; }
+  .qr.missing .code { background: var(--soft); color: var(--muted); font-size: .9rem; }
+
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 760px) { .visit { grid-template-columns: 1fr; } }
+  .visit .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 10px; align-content: start; }
+  .big-phone { font: 800 2.2rem/1 var(--display); letter-spacing: .02em; }
+
+  main section[id] { scroll-margin-top: 64px; }
+  @media (min-width: 861px) { .phone { width: 340px; } }
+  /* hero ambience */
+  .hero { background: radial-gradient(900px 600px at 80% 30%, #2a3f9e 0%, transparent 60%), radial-gradient(700px 500px at 0% 100%, #22348a 0%, transparent 60%), var(--navy); }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(246,194,28,.22) 1.2px, transparent 1.4px); background-size: 26px 26px; mask-image: linear-gradient(90deg, transparent, #000 60%); -webkit-mask-image: linear-gradient(90deg, transparent, #000 60%); pointer-events: none; }
+  .portraits figure { box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+  @media (prefers-reduced-motion: no-preference) {
+    .portraits .p1 { animation: bob 6s ease-in-out infinite; }
+    .portraits .p2 { animation: bob 6s ease-in-out -3s infinite; }
+    @keyframes bob { 50% { transform: translateY(-10px); } }
+  }
+
+  /* trust strip */
+  .trust { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: -58px; position: relative; z-index: 3; }
+  .trust > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; align-items: center; box-shadow: 0 12px 30px rgba(20,33,92,.12); }
+  .trust svg { grid-row: span 2; width: 40px; height: 40px; padding: 8px; border-radius: 12px; background: var(--gold); color: #14215c; }
+  .trust b { font-size: 1.02rem; line-height: 1.2; }
+  .trust span { color: var(--muted); font-size: .88rem; line-height: 1.3; }
+  @media (max-width: 860px) { .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 420px) { .trust > div { padding: 12px; grid-template-columns: 34px 1fr; } .trust svg { width: 34px; height: 34px; padding: 6px; } }
+
+  /* video showcase */
+  .showcase { background: linear-gradient(160deg, #0d1640 0%, var(--navy) 55%, #1d2f7a 100%); color: #fff; margin-top: 56px; position: relative; overflow: hidden; }
+  .showcase::before { content: ""; position: absolute; width: 900px; height: 900px; right: -300px; top: -200px; border-radius: 50%; border: 2px solid rgba(246,194,28,.18); box-shadow: 0 0 0 120px rgba(246,194,28,.03); }
+  .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding-block: 64px; position: relative; }
+  @media (max-width: 860px) { .sc-grid { grid-template-columns: 1fr; padding-block: 48px; } }
+  .eyebrow.on-dark { color: var(--gold); }
+  .sc-text h2 { font-size: clamp(2rem, 5vw, 3.1rem); margin: 8px 0 14px; }
+  .sc-text h2 em { font-style: normal; color: var(--gold); }
+  .sc-text p { color: #cfd5f3; max-width: 46ch; margin: 0; }
+  .sc-points { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 8px; }
+  .sc-points li { display: flex; gap: 10px; align-items: center; font-weight: 500; }
+  .sc-points li::before { content: ""; width: 22px; height: 22px; flex: none; border-radius: 50%; background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314215c' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat; }
+  .sc-stage { position: relative; display: grid; place-items: center; min-height: 560px; }
+  .phone { position: relative; width: min(300px, 78vw); aspect-ratio: 9 / 16; border-radius: 44px; padding: 12px; background: #050816; box-shadow: 0 0 0 2px var(--gold), 0 30px 80px rgba(0,0,0,.55), 0 0 120px rgba(246,194,28,.25); z-index: 2; }
+  .phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 33px; display: block; background: #0b1338; }
+  .sound { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); display: inline-flex; gap: 8px; align-items: center; border: 0; cursor: pointer; background: var(--gold); color: #14215c; font: 700 .95rem/1 var(--body); padding: 11px 16px; border-radius: 999px; box-shadow: 0 8px 22px rgba(0,0,0,.35); white-space: nowrap; }
+  .sound svg { width: 20px; height: 20px; }
+  .sound[aria-pressed="true"] { background: #fff; }
+  @media (prefers-reduced-motion: no-preference) { .sound[aria-pressed="false"] { animation: pulse 2.2s ease-in-out infinite; } @keyframes pulse { 50% { box-shadow: 0 0 0 10px rgba(246,194,28,.25), 0 8px 22px rgba(0,0,0,.35); } } }
+  .orb { position: absolute; border-radius: 50%; filter: blur(2px); }
+  .o1 { width: 380px; height: 380px; background: radial-gradient(circle, rgba(246,194,28,.35), transparent 70%); }
+  .o2 { width: 520px; height: 520px; border: 1.5px dashed rgba(255,255,255,.18); }
+  .bubble { position: absolute; border-radius: 50%; object-fit: cover; background: #fff; z-index: 3; box-shadow: 0 12px 30px rgba(0,0,0,.4); }
+  .b1 { width: 110px; height: 110px; left: 6%; top: 14%; border: 5px solid var(--gold); }
+  .b2 { width: 92px; height: 92px; right: 6%; bottom: 14%; border: 5px solid #fff; }
+  @media (max-width: 420px) { .b1 { width: 78px; height: 78px; left: 0; } .b2 { width: 66px; height: 66px; right: 0; } .o2 { width: 360px; height: 360px; } .sc-stage { min-height: 520px; } }
+
+  /* review band */
+  .review-band { background: var(--navy); color: #fff; }
+  .rv-grid { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; padding-block: 44px; }
+  .rv-grid h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 6px 0 10px; }
+  .rv-grid p { color: #cfd5f3; margin: 0 0 18px; max-width: 56ch; }
+  .rv-qr { display: grid; justify-items: center; gap: 8px; color: var(--gold); font-weight: 700; }
+  .rv-qr .code { width: 150px; height: 150px; background: #fff; border-radius: 16px; padding: 8px; }
+  .rv-qr .code img { width: 100%; height: 100%; image-rendering: pixelated; }
+  @media (max-width: 640px) { .rv-grid { grid-template-columns: 1fr; } }
+
+  /* faq */
+  .faq { display: grid; gap: 10px; max-width: 820px; }
+  .faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 4px 18px; }
+  .faq summary { cursor: pointer; font-weight: 700; padding: 12px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font: 700 1.4rem/1 var(--display); color: var(--gold-ink); }
+  .faq details[open] summary::after { content: "–"; }
+  .faq p { margin: 0 0 14px; color: var(--muted); }
+  .mail { font-weight: 700; font-size: 1.1rem; word-break: break-all; }
+
+  .svc { transition: transform .2s, box-shadow .2s; }
+  .svc:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(20,33,92,.12); }
+  .wa-fab { position: fixed; left: calc(16px + env(safe-area-inset-left, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 25; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff; display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+  .wa-fab svg { width: 30px; height: 30px; }
+  @media (min-width: 861px) { .wa-fab { left: auto; right: calc(24px + env(safe-area-inset-right, 0px)); bottom: calc(24px + env(safe-area-inset-bottom, 0px)); } }
+
+  footer { background: var(--navy); color: #c9cff0; padding-block: 26px; font-size: .92rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+  footer a { color: #c9cff0; }
+  .fab { position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 25; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+  @media (min-width: 861px) { .fab { display: none; } }
+</style>
+</head>
+<body>
+<div id="demoBar" class="demo-bar" hidden>डेमो मोड: बुकिंग फक्त या ब्राउझरमध्ये साठवले जाते. सर्व्हर जोडण्यासाठी config.js मध्ये API_URL टाका.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>ओजस</b><span>बाल व स्त्री रुग्णालय</span></a>
+    <nav aria-label="मुख्य">
+      <a href="#video">व्हिडिओ</a><a href="#services">सुविधा</a><a href="#doctors">डॉक्टर</a><a href="#book">अपॉइंटमेंट</a><a href="#scan">QR स्कॅन</a><a href="#visit">पत्ता</a>
+    </nav>
+    <a class="btn btn-gold call" href="tel:+918799809360" aria-label="फोन करा 8799809360">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      <span class="tab">8799809360</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>ओजस क्लिनिक<em>बाल व स्त्री रुग्णालय</em></h1>
+        <div class="tags"><span>बालरोग</span><span>स्त्रीरोग</span><span>जनरल मेडिसिन</span></div>
+        <p class="lead">लहान मुलांच्या व महिलांच्या आरोग्याची काळजी आता तेल्हाऱ्यात, अनुभवी डॉक्टरांकडून. घरबसल्या अपॉइंटमेंट बुक करा आणि रांगेत न थांबता आपला टोकन क्रमांक मिळवा.</p>
+        <div class="cta">
+          <a class="btn btn-gold" href="#book">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"/></svg>
+            अपॉइंटमेंट बुक करा</a>
+          <a class="btn btn-line" href="#video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            व्हिडिओ पाहा</a>
+        </div>
+        <p class="hours-note">पत्ता: शेगाव रोड, शेगाव नाका जवळ, तेल्हारा.</p>
+      </div>
+      <div class="portraits" aria-hidden="true">
+        <figure class="p1"><img src="assets/baby.jpg" alt=""></figure>
+        <figure class="p2"><img src="assets/mother.jpg" alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust wrap" aria-label="वैशिष्ट्ये">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg><b>ऑनलाइन टोकन</b><span>रांगेत न थांबता</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4v6a5 5 0 0 0 10 0V4M9 15v1a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="12" r="2"/></svg><b>अनुभवी डॉक्टर</b><span>बालरोग व स्त्रीरोग</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg><b>आई व बाळाची काळजी</b><span>गर्भधारणेपासून बालपणापर्यंत</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b>सुरक्षित माहिती</b><span>फक्त क्लिनिककडे</span></div>
+  </div>
+
+  <section class="showcase" id="video">
+    <div class="wrap sc-grid">
+      <div class="sc-text">
+        <span class="eyebrow on-dark">1 मिनिटाचा व्हिडिओ</span>
+        <h2>प्रत्येक हसऱ्या बाळामागे,<br><em>एक निरोगी आई.</em></h2>
+        <p>ओजस क्लिनिक कसे काम करते, डॉक्टर कोण आहेत आणि घरबसल्या अपॉइंटमेंट कशी घ्यायची, सर्व एका व्हिडिओमध्ये पाहा.</p>
+        <ul class="sc-points">
+          <li>बालरोग, स्त्रीरोग व जनरल मेडिसिन</li>
+          <li>1 मिनिटात ऑनलाइन बुकिंग व टोकन</li>
+          <li>QR स्कॅन करून थेट कॉल व बुकिंग</li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn-gold" href="#book">आताच बुक करा</a>
+          <a class="btn btn-line" id="ytLink" href="#" target="_blank" rel="noopener">YouTube वर पाहा</a>
+        </div>
+      </div>
+      <div class="sc-stage">
+        <span class="orb o1" aria-hidden="true"></span><span class="orb o2" aria-hidden="true"></span>
+        <div class="phone">
+          <video id="promo" src="assets/ojas-promo.mp4" poster="assets/ojas-promo-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="ओजस क्लिनिक प्रोमो व्हिडिओ"></video>
+          <button class="sound" id="soundBtn" type="button" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path id="wave" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+            <span>आवाजासह पाहा</span>
+          </button>
+        </div>
+        <img class="bubble b1" src="assets/baby.jpg" alt="" aria-hidden="true">
+        <img class="bubble b2" src="assets/mother.jpg" alt="" aria-hidden="true">
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="sec-h"><span class="eyebrow">उपलब्ध सुविधा</span><h2>आम्ही कशात मदत करतो</h2><p>तपासणी, योग्य निदान व उपचार, एकाच ठिकाणी.</p></div>
+      <div class="services">
+        <article class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="7" r="3"/><path d="M8 21v-4a4 4 0 0 1 8 0v4M12 14v3"/><path d="M5 12c1.5-.5 2.5 0 3 1M19 12c-1.5-.5-2.5 0-3 1"/></svg></div><div><h3>गर्भवती माता तपासणी</h3><p>गर्भवती मातांची नियमित तपासणी व योग्य मार्गदर्शन.</p></div></article>
+        <article class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="9" r="5"/><path d="M12 14v8M9 19h6"/></svg></div><div><h3>PCOD व वंध्यत्व</h3><p>PCOD व वंध्यत्वाची तपासणी व उपचार.</p></div></article>
+        <article class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><div><h3>महिलांचे सर्व आजार</h3><p>महिलांच्या सर्व आजारांवर तपासणी व उपचार.</p></div></article>
+        <article class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="10" r="6"/><path d="M9.5 10h.01M14.5 10h.01M10 12.5c1 .8 3 .8 4 0M12 4c0-1 1-2 2-2"/><path d="M8 20h8"/></svg></div><div><h3>लहान मुलांचे सर्व आजार</h3><p>लहान मुलांच्या सर्व आजारांची तपासणी व उपचार.</p></div></article>
+        <article class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg></div><div><h3>मूळव्याध, भगंदर व फिशर</h3><p>मूळव्याध, भगंदर व फिशर यांची तपासणी व उपचार.</p></div></article>
+        <article class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3a4 4 0 0 1 4 4v1h-8V7a4 4 0 0 1 4-4zM9 12h6M12 9v6"/><circle cx="12" cy="12" r="9"/></svg></div><div><h3>कान टोचणे</h3><p>लहान मुलांचे सुरक्षित व स्वच्छ कान टोचणे.</p></div></article>
+        <article class="svc wide"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4v6a5 5 0 0 0 10 0V4M4 4h2M12 4h2M9 15v1a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="12" r="2"/></svg></div><div><h3>सर्वसाधारण आजार</h3><p>सर्वसाधारण आजारांची तपासणी व उपचार: रक्तदाब (BP), मधुमेह, ताप, सर्दी, खोकला, उलट्या इत्यादी.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="doctors" style="padding-top:8px">
+    <div class="wrap">
+      <div class="sec-h"><span class="eyebrow">आमचे डॉक्टर</span><h2>अनुभवी व विश्वासू उपचार</h2></div>
+      <div class="doctors">
+        <article class="doc">
+          <div class="head"><img src="assets/dr-swapnil.jpg" alt="डॉ. स्वप्निल काळणे" loading="lazy"><h3>डॉ. स्वप्निल काळणे</h3><span class="deg">B.A.M.S., FICH</span></div>
+          <div class="body">
+            <div class="role">बालरोग तज्ञ व जनरल फिजिशियन</div>
+            <ul><li>Ex. RMO – Vatsalya Hospital, Pune</li><li>Ex. RMO – Shree Hospital, Pune</li><li>Ex. RMO – Bhalerao Children's Hospital, Pune</li></ul>
+            <a class="btn btn-navy bookdoc" href="#book" data-doc="डॉ. स्वप्निल काळणे">यांची अपॉइंटमेंट घ्या</a>
+          </div>
+        </article>
+        <article class="doc">
+          <div class="head"><img src="assets/dr-anuja.jpg" alt="डॉ. अनुजा काळणे (बुरुकले)" loading="lazy"><h3>डॉ. अनुजा काळणे (बुरुकले)</h3><span class="deg">B.A.M.S., PGCGO</span></div>
+          <div class="body">
+            <div class="role">स्त्रीरोग तज्ञ व जनरल फिजिशियन</div>
+            <ul><li>माजी वैद्यकीय अधिकारी (Ex. Medical Officer)</li></ul>
+            <a class="btn btn-navy bookdoc" href="#book" data-doc="डॉ. अनुजा काळणे (बुरुकले)">यांची अपॉइंटमेंट घ्या</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block book" id="book">
+    <div class="wrap">
+      <div class="sec-h"><span class="eyebrow">ऑनलाइन अपॉइंटमेंट</span><h2>तुमची वेळ आताच राखून ठेवा</h2><p>फॉर्म भरा आणि त्वरित टोकन क्रमांक मिळवा. क्लिनिकमध्ये तो क्रमांक सांगा.</p></div>
+      <div class="book-grid">
+        <form class="card form-stack" id="bookForm" novalidate>
+          <div class="field">
+            <label>डॉक्टर निवडा</label>
+            <div class="chips" id="docChips">
+              <input type="radio" name="doctor" id="d1" value="डॉ. स्वप्निल काळणे" checked><label for="d1">डॉ. स्वप्निल काळणे <small>(बालरोग)</small></label>
+              <input type="radio" name="doctor" id="d2" value="डॉ. अनुजा काळणे (बुरुकले)"><label for="d2">डॉ. अनुजा काळणे <small>(स्त्रीरोग)</small></label>
+              <input type="radio" name="doctor" id="d3" value="कोणतेही"><label for="d3">कोणतेही</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="service">कशासाठी भेट?</label>
+            <select id="service" name="service">
+              <option>लहान मुलांचे आजार</option><option>गर्भवती माता तपासणी</option><option>PCOD / वंध्यत्व</option>
+              <option>महिलांचे आजार</option><option>मूळव्याध / भगंदर / फिशर</option><option>कान टोचणे</option>
+              <option>सर्वसाधारण आजार (BP, मधुमेह, ताप इ.)</option><option>इतर</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>तारीख निवडा</label>
+            <div class="daystrip" id="days" role="group" aria-label="तारीख"></div>
+            <input type="date" id="date" name="date" aria-label="किंवा कॅलेंडरमधून तारीख निवडा">
+          </div>
+          <div class="field">
+            <label>वेळ</label>
+            <div class="chips">
+              <input type="radio" name="session" id="s1" value="सकाळ" checked><label for="s1">सकाळ</label>
+              <input type="radio" name="session" id="s2" value="दुपार"><label for="s2">दुपार</label>
+              <input type="radio" name="session" id="s3" value="संध्याकाळ"><label for="s3">संध्याकाळ</label>
+            </div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label for="name">रुग्णाचे पूर्ण नाव *</label><input id="name" name="name" autocomplete="name" maxlength="60" required placeholder="उदा. आरुष पाटील"></div>
+            <div class="field"><label for="phone">मोबाईल नंबर *</label><input id="phone" name="phone" inputmode="numeric" autocomplete="tel" maxlength="10" required placeholder="10 अंकी नंबर"></div>
+          </div>
+          <div class="grid3">
+            <div class="field"><label for="age">वय <small>(वर्षे)</small></label><input id="age" name="age" inputmode="decimal" maxlength="4" placeholder="उदा. 3"></div>
+            <div class="field"><label for="gender">लिंग</label><select id="gender" name="gender"><option value="">निवडा</option><option>मुलगा / पुरुष</option><option>मुलगी / स्त्री</option></select></div>
+            <div class="field"><label for="village">गाव / शहर</label><input id="village" name="village" maxlength="60" placeholder="उदा. तेल्हारा"></div>
+          </div>
+          <div class="field"><label for="problem">त्रास / लक्षणे <small>(ऐच्छिक)</small></label><textarea id="problem" name="problem" maxlength="300" placeholder="थोडक्यात लिहा"></textarea></div>
+          <input class="hp" type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="err" id="formErr" hidden></p>
+          <button class="btn btn-gold" type="submit" id="bookBtn">अपॉइंटमेंट निश्चित करा</button>
+          <p style="margin:0;color:var(--muted);font-size:.88rem">तातडीच्या परिस्थितीत थेट फोन करा: <b class="tab">8799809360</b>. तुमची माहिती फक्त क्लिनिककडे सुरक्षित राहते.</p>
+        </form>
+
+        <aside class="side">
+          <div class="card">
+            <h3>कसे काम करते?</h3>
+            <ol><li>डॉक्टर, तारीख व वेळ निवडा.</li><li>नाव व मोबाईल लिहा.</li><li>टोकन क्रमांक व अपॉइंटमेंट ID मिळवा.</li><li>क्लिनिकमध्ये ID दाखवा.</li></ol>
+          </div>
+          <div class="card">
+            <h3>माझी अपॉइंटमेंट तपासा</h3>
+            <form id="lookupForm" class="form-stack" style="gap:10px">
+              <div class="field"><label for="lid">अपॉइंटमेंट ID</label><input id="lid" placeholder="उदा. OJ4K7Q2P" maxlength="10" autocapitalize="characters"></div>
+              <div class="field"><label for="lphone">मोबाईल नंबर</label><input id="lphone" inputmode="numeric" maxlength="10"></div>
+              <button class="btn btn-ghost" type="submit">स्थिती पाहा</button>
+            </form>
+            <div id="lookupOut" class="result" hidden></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="scan">
+    <div class="wrap">
+      <div class="sec-h"><span class="eyebrow">मोबाईलने स्कॅन करा</span><h2>एका स्कॅनमध्ये सर्व काही</h2><p>मोबाईल कॅमेऱ्याने QR कोड स्कॅन करा. क्लिनिकमध्ये लावण्यासाठी <a href="qr.html">QR पोस्टर उघडा</a>.</p></div>
+      <div class="qr-grid" id="qrGrid"></div>
+    </div>
+  </section>
+
+  <section class="review-band">
+    <div class="wrap rv-grid">
+      <div>
+        <span class="eyebrow on-dark">तुमचा अनुभव महत्त्वाचा</span>
+        <h2>उपचार आवडले? Instagram वर रिव्ह्यू द्या!</h2>
+        <p>तुमचा एक रिव्ह्यू दुसऱ्या आईला व कुटुंबाला योग्य डॉक्टर निवडायला मदत करतो. @ojas_hospital25 ला फॉलो करा व अनुभव लिहा.</p>
+        <a class="btn btn-gold" id="igLink" href="#" target="_blank" rel="noopener">Instagram उघडा</a>
+      </div>
+      <div class="rv-qr"><div class="code" id="igQr"></div><span>स्कॅन करा</span></div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-h"><span class="eyebrow">नेहमीचे प्रश्न</span><h2>ऑनलाइन अपॉइंटमेंटबद्दल</h2></div>
+      <div class="faq">
+        <details open><summary>ऑनलाइन अपॉइंटमेंटसाठी पैसे लागतात का?</summary><p>नाही. वेबसाइटवरून अपॉइंटमेंट बुक करणे पूर्णपणे मोफत आहे. तपासणी शुल्क क्लिनिकमध्ये भरावे.</p></details>
+        <details><summary>टोकन क्रमांक कसा मिळतो?</summary><p>फॉर्म भरून "अपॉइंटमेंट निश्चित करा" दाबताच टोकन क्रमांक व अपॉइंटमेंट ID स्क्रीनवर दिसतो. त्याचा स्क्रीनशॉट घ्या किंवा WhatsApp वर पाठवा.</p></details>
+        <details><summary>अपॉइंटमेंट रद्द किंवा बदलायची असेल तर?</summary><p>8799809360 वर फोन करा व तुमचा अपॉइंटमेंट ID सांगा. स्टाफ तुमची नोंद बदलून देईल.</p></details>
+        <details><summary>माझी माहिती सुरक्षित आहे का?</summary><p>हो. तुमची माहिती फक्त ओजस क्लिनिकच्या खाजगी नोंदवहीत साठवली जाते. ती इतर कोणालाही दिसत नाही.</p></details>
+        <details><summary>तातडीच्या वेळी काय करावे?</summary><p>तातडीच्या परिस्थितीत ऑनलाइन बुकिंगची वाट न पाहता थेट 8799809360 वर फोन करा किंवा जवळच्या रुग्णालयात जा.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="visit" style="padding-top:8px">
+    <div class="wrap">
+      <div class="sec-h"><span class="eyebrow">भेट द्या</span><h2>पत्ता व संपर्क</h2></div>
+      <div class="visit">
+        <div class="card">
+          <strong>ओजस क्लिनिक</strong>
+          <p style="margin:0">शेगाव रोड, शेगाव नाका जवळ, तेल्हारा.</p>
+          <a class="btn btn-navy" style="justify-self:start" id="mapLink" href="#" target="_blank" rel="noopener">नकाशात पाहा</a>
+        </div>
+        <div class="card">
+          <span style="color:var(--muted)">अपॉइंटमेंट व चौकशीसाठी</span>
+          <div class="big-phone tab">8799809360</div>
+          <div class="cta" style="margin-top:4px">
+            <a class="btn btn-gold" href="tel:+918799809360">फोन करा</a>
+            <a class="btn btn-ghost" id="waLink" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+          <span style="color:var(--muted);margin-top:6px">ई-मेल</span>
+          <a class="mail" href="mailto:ojashospital2025@gmail.com">ojashospital2025@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> ओजस क्लिनिक, तेल्हारा · <a href="mailto:ojashospital2025@gmail.com">ojashospital2025@gmail.com</a></span>
+    <span><a href="admin.html">स्टाफ लॉगिन</a></span>
+  </div>
+</footer>
+<a class="btn btn-gold fab" href="#book">अपॉइंटमेंट</a>
+<a class="wa-fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="WhatsApp वर संपर्क करा">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<dialog id="ticket" aria-labelledby="tTitle">
+  <div class="ticket">
+    <div class="t-head"><p id="tTitle">अपॉइंटमेंट निश्चित झाली</p><div class="num tab" id="tNum">—</div><div>तुमचा टोकन क्रमांक</div></div>
+    <div class="t-body">
+      <dl>
+        <dt>ID</dt><dd class="tab" id="tId"></dd>
+        <dt>तारीख</dt><dd id="tDate"></dd>
+        <dt>वेळ</dt><dd id="tSession"></dd>
+        <dt>डॉक्टर</dt><dd id="tDoc"></dd>
+        <dt>रुग्ण</dt><dd id="tName"></dd>
+      </dl>
+      <p id="tDup" style="margin:0;color:var(--warn);font-weight:600" hidden>या मोबाईलवर या दिवसाची अपॉइंटमेंट आधीच आहे. तीच माहिती दाखवली आहे.</p>
+      <p style="margin:0;color:var(--muted);font-size:.9rem">कृपया या स्क्रीनचा स्क्रीनशॉट घ्या. क्लिनिकमध्ये ID सांगा.</p>
+      <div class="acts">
+        <a class="btn btn-gold" id="tWa" href="#" target="_blank" rel="noopener">WhatsApp वर पाठवा</a>
+        <button class="btn btn-ghost" type="button" id="tClose">ठीक आहे</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="config.js"></script>
+<script>
+(function () {
+  const C = window.OJAS_CONFIG, A = window.OJAS;
+  const $ = s => document.querySelector(s);
+  $("#yr").textContent = new Date().getFullYear();
+  if (A.isDemo) $("#demoBar").hidden = false;
+  $("#mapLink").href = C.MAP_URL;
+  $("#waLink").href = "https://wa.me/" + C.WHATSAPP + "?text=" + encodeURIComponent("नमस्कार, ओजस क्लिनिक. मला अपॉइंटमेंटबद्दल माहिती हवी आहे.");
+
+  $("#waFab").href = $("#waLink").href;
+  $("#igLink").href = C.INSTAGRAM_URL;
+  if (C.YOUTUBE_URL) $("#ytLink").href = C.YOUTUBE_URL; else $("#ytLink").hidden = true;
+  if (window.qrcode) { const q = qrcode(0, "M"); q.addData(C.INSTAGRAM_URL); q.make(); $("#igQr").innerHTML = `<img alt="Instagram QR कोड" src="${q.createDataURL(6, 1)}">`; }
+
+  // प्रोमो व्हिडिओ: आपोआप (आवाजाशिवाय) चालू, बटणाने आवाज; स्क्रीनबाहेर गेल्यावर थांबतो
+  const vid = $("#promo"), sBtn = $("#soundBtn");
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { vid.removeAttribute("autoplay"); vid.pause(); }
+  sBtn.addEventListener("click", () => {
+    const on = sBtn.getAttribute("aria-pressed") !== "true";
+    if (on) { vid.currentTime = 0; vid.muted = false; vid.loop = false; }
+    else { vid.muted = true; vid.loop = true; }
+    vid.play().catch(() => {});
+    sBtn.setAttribute("aria-pressed", String(on));
+    sBtn.querySelector("span").textContent = on ? "आवाज बंद करा" : "आवाजासह पाहा";
+  });
+  vid.addEventListener("ended", () => { vid.muted = true; vid.loop = true; sBtn.setAttribute("aria-pressed", "false"); sBtn.querySelector("span").textContent = "पुन्हा आवाजासह पाहा"; vid.play().catch(() => {}); });
+  if ("IntersectionObserver" in window && !reduce) {
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause(); }), { threshold: 0.25 }).observe(vid);
+  }
+
+  const MONTHS = ["जाने", "फेब्रु", "मार्च", "एप्रिल", "मे", "जून", "जुलै", "ऑग", "सप्टें", "ऑक्टो", "नोव्हें", "डिसें"];
+  const DAYS = ["रवि", "सोम", "मंगळ", "बुध", "गुरु", "शुक्र", "शनि"];
+  function fmt(iso) { const [y, m, d] = iso.split("-").map(Number); const dt = new Date(Date.UTC(y, m - 1, d)); return DAYS[dt.getUTCDay()] + ", " + d + " " + MONTHS[m - 1] + " " + y; }
+  function addDays(iso, n) { const [y, m, d] = iso.split("-").map(Number); const dt = new Date(Date.UTC(y, m - 1, d + n)); return dt.toISOString().slice(0, 10); }
+
+  // तारीख पट्टी
+  const today = A.todayIST(), dateIn = $("#date"), strip = $("#days");
+  dateIn.min = today; dateIn.max = addDays(today, C.BOOKING_DAYS_AHEAD); dateIn.value = today;
+  for (let i = 0; i < 10; i++) {
+    const iso = addDays(today, i), [y, m, d] = iso.split("-").map(Number);
+    const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+    const b = document.createElement("button"); b.type = "button"; b.dataset.iso = iso;
+    b.innerHTML = `<small>${i === 0 ? "आज" : i === 1 ? "उद्या" : DAYS[wd]}</small><b class="tab">${d}</b><small>${MONTHS[m - 1]}</small>`;
+    b.setAttribute("aria-label", fmt(iso));
+    b.onclick = () => { dateIn.value = iso; sync(); };
+    strip.appendChild(b);
+  }
+  function sync() { strip.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.iso === dateIn.value))); }
+  dateIn.addEventListener("change", sync); sync();
+
+  document.querySelectorAll(".bookdoc").forEach(a => a.addEventListener("click", () => {
+    const r = document.querySelector(`input[name=doctor][value="${a.dataset.doc}"]`); if (r) r.checked = true;
+    $("#service").value = a.dataset.doc.includes("स्वप्निल") ? "लहान मुलांचे आजार" : "महिलांचे आजार";
+  }));
+  $("#phone").addEventListener("input", e => e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10));
+  $("#lphone").addEventListener("input", e => e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10));
+
+  function toast(msg) { const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 3200); }
+
+  // बुकिंग
+  $("#bookForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const f = new FormData(e.target), err = $("#formErr"), btn = $("#bookBtn");
+    const body = Object.fromEntries(f.entries()); body.action = "book";
+    err.hidden = true;
+    const bad = !body.name || body.name.trim().length < 2 ? "रुग्णाचे नाव लिहा." :
+      !/^[6-9]\d{9}$/.test(body.phone || "") ? "10 अंकी योग्य मोबाईल नंबर लिहा." :
+      !body.date || body.date < dateIn.min || body.date > dateIn.max ? "योग्य तारीख निवडा." : "";
+    if (bad) { err.textContent = bad; err.hidden = false; return; }
+    btn.disabled = true; btn.textContent = "नोंद होत आहे…";
+    try {
+      const r = await A.api(body);
+      if (!r.ok) throw new Error(r.error || "बुकिंग झाले नाही");
+      $("#tNum").textContent = r.token; $("#tId").textContent = r.id; $("#tDate").textContent = fmt(r.date);
+      $("#tSession").textContent = r.session; $("#tDoc").textContent = body.doctor; $("#tName").textContent = body.name;
+      $("#tDup").hidden = !r.duplicate;
+      const msg = `ओजस क्लिनिक अपॉइंटमेंट\nID: ${r.id}\nटोकन: ${r.token}\nतारीख: ${fmt(r.date)} (${r.session})\nरुग्ण: ${body.name}\nडॉक्टर: ${body.doctor}`;
+      $("#tWa").href = "https://wa.me/" + C.WHATSAPP + "?text=" + encodeURIComponent(msg);
+      $("#ticket").showModal();
+      if (!r.duplicate) { ["name", "age", "village", "problem"].forEach(k => e.target.elements[k].value = ""); }
+    } catch (ex) {
+      err.textContent = (ex.message || "नेटवर्क त्रुटी") + " — कृपया पुन्हा प्रयत्न करा किंवा 8799809360 वर फोन करा.";
+      err.hidden = false;
+    } finally { btn.disabled = false; btn.textContent = "अपॉइंटमेंट निश्चित करा"; }
+  });
+  $("#tClose").onclick = () => $("#ticket").close();
+
+  // स्थिती तपासा
+  $("#lookupForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const out = $("#lookupOut"); out.hidden = false; out.textContent = "शोधत आहे…";
+    try {
+      const r = await A.api({ action: "lookup", id: $("#lid").value.trim().toUpperCase(), phone: $("#lphone").value });
+      if (!r.ok) { out.textContent = r.error; return; }
+      const a = r.appt;
+      out.innerHTML = ""; [["टोकन", a.token], ["तारीख", fmt(a.date) + " (" + a.session + ")"], ["डॉक्टर", a.doctor], ["स्थिती", a.status]]
+        .forEach(([k, v]) => { const p = document.createElement("div"); p.innerHTML = `<span style="color:var(--muted)">${k}:</span> `; const b = document.createElement("b"); b.textContent = v; p.appendChild(b); out.appendChild(p); });
+    } catch (ex) { out.textContent = "नेटवर्क त्रुटी. पुन्हा प्रयत्न करा."; }
+  });
+
+  // QR कोड
+  const site = location.href.split("#")[0].replace(/index\.html$/, "");
+  const QRS = [
+    { t: "अपॉइंटमेंट बुक करा", p: "स्कॅन करा आणि थेट फॉर्म उघडा", url: site + "#book", tag: "बुकिंग" },
+    { t: "फोन करा", p: "स्कॅन केल्यावर कॉल लागेल: 8799809360", url: "tel:+91" + C.PHONE, tag: "कॉल" },
+    { t: "Instagram वर रिव्ह्यू द्या", p: "@ojas_hospital25 ला फॉलो करा व अनुभव लिहा", url: C.INSTAGRAM_URL, tag: "Instagram" },
+    { t: "YouTube चॅनेल", p: "आरोग्य माहितीचे व्हिडिओ पाहा", url: C.YOUTUBE_URL, tag: "YouTube" }
+  ];
+  const grid = $("#qrGrid");
+  QRS.forEach(q => {
+    const card = document.createElement(q.url && !q.url.startsWith("tel:") ? "a" : "div");
+    card.className = "qr" + (q.url ? "" : " missing");
+    if (card.tagName === "A") { card.href = q.url; card.target = "_blank"; card.rel = "noopener"; card.style.textDecoration = "none"; }
+    let code = '<div class="code">लिंक लवकरच</div>';
+    if (q.url && window.qrcode) {
+      const qr = qrcode(0, "M"); qr.addData(q.url); qr.make();
+      code = `<div class="code"><img alt="${q.t} QR कोड" src="${qr.createDataURL(6, 1)}"></div>`;
+    }
+    card.innerHTML = `<span class="tag">${q.tag}</span>${code}<h3>${q.t}</h3><p>${q.p}</p>`;
+    grid.appendChild(card);
+  });
+})();
+</script>
+</body>
+</html>
