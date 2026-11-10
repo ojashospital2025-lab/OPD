@@ -4,7 +4,7 @@
 window.OJAS_CONFIG = {
   // Google Apps Script Web App URL (README मधील पायरी 2 नंतर येथे पेस्ट करा).
   // रिकामे ठेवल्यास वेबसाइट "डेमो मोड" मध्ये चालते (डेटा फक्त त्याच ब्राउझरमध्ये).
-  API_URL: "",
+  API_URL: "https://script.google.com/macros/s/AKfycbxjNEp5XeNhFc8JRAga2J7asjME6Fd5GV0gYD7-oXjmhhWD4-7zSusyJcRgmLDfnaLi_A/exec",
 
   PHONE: "8799809360",
   WHATSAPP: "918799809360",
