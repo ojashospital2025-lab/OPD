@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Mukta:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 <style>
   body { font-size: 16px; }
   .bar { background: var(--navy); color: #fff; }
@@ -84,7 +84,7 @@
   <div id="list"></div>
 </main>
 
-<script src="config.js"></script>
+<script src="config.js?v=2"></script>
 <script>
 (function () {
   const A = window.OJAS, $ = s => document.querySelector(s);
@@ -112,7 +112,7 @@
       token = r.token; $("#pw").value = "";
       try { sessionStorage.setItem("ojas_admin", JSON.stringify({ token, exp: r.expires || Date.now() + 8 * 3600e3 })); } catch (e) {}
       show();
-    } catch (ex) { err.textContent = ex.message || "लॉगिन झाले नाही"; err.hidden = false; }
+    } catch (ex) { err.textContent = (ex.message === "Failed to fetch" ? "सर्व्हरशी संपर्क झाला नाही. Apps Script Deploy मध्ये Who has access: Anyone आहे का ते तपासा." : (ex.message || "लॉगिन झाले नाही")); err.hidden = false; }
     finally { $("#loginBtn").disabled = false; }
   });
   $("#logout").onclick = () => { token = null; try { sessionStorage.removeItem("ojas_admin"); } catch (e) {} clearInterval(timer); show(); };
